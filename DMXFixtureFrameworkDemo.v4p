@@ -1,8 +1,8 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50debug33.9.dtd" >
-   <PATCH nodename="C:\Users\joreg\Documents\repos\DMX\DMXFixtureFrameworkDemo.v4p" systemname="demo" filename="C:\Users\joreg\Documents\repos\DMX\demo.v4p" scrollx="0" scrolly="0">
-   <BOUNDS type="Window" left="1725" top="1260" width="13515" height="11250">
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv50debug34.100.dtd" >
+   <PATCH nodename="C:\Users\joreg\Documents\repos\DMXFixtureFramework\DMXFixtureFrameworkDemo.v4p" systemname="demo" filename="C:\Users\joreg\Documents\repos\DMX\demo.v4p" scrollx="0" scrolly="0">
+   <BOUNDS type="Window" left="1590" top="915" width="13515" height="13695">
    </BOUNDS>
-   <PACK Name="addonpack" Version="33.10.0">
+   <PACK Name="addonpack" Version="34.100.0">
    </PACK>
    <NODE nodename="IOBox (Color)" componentmode="InABox" id="3" systemname="IOBox (Color)">
    <BOUNDS type="Box" left="2355" top="1575" width="1545" height="405">
@@ -19,7 +19,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4005" top="1605" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0.15,0.06">
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0,0.06">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -51,7 +51,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="5310" top="1605" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="10,14">
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="12,17">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -69,7 +69,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="870" top="2100" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="5">
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="6">
    </PIN>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -79,9 +79,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="20" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="2925" top="6600" width="1065" height="3540">
+   <BOUNDS type="Box" left="2910" top="7740" width="1050" height="5070">
    </BOUNDS>
-   <BOUNDS type="Node" left="2925" top="6600" width="0" height="0">
+   <BOUNDS type="Node" left="2910" top="7740" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -91,27 +91,13 @@
    </PIN>
    <PIN pinname="Columns" slicecount="1" values="1">
    </PIN>
-   <PIN pinname="Y Input Value" visible="1" slicecount="255" values="0,227,25,43,15,194,6,236,1,207,205,0,117,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
+   <PIN pinname="Y Input Value" visible="1" slicecount="512" values="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
    </PIN>
-   <PIN pinname="Rows" slicecount="1" values="20">
+   <PIN pinname="Rows" slicecount="1" values="25">
    </PIN>
    <PIN pinname="Show SliceIndex" slicecount="1" values="1">
    </PIN>
    </NODE>
-   <NODE systemname="FixtureA (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="FixtureA (DMX)" componentmode="Hidden" id="28">
-   <BOUNDS type="Node" left="1695" top="2745" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Fixture" visible="1">
-   </PIN>
-   <PIN pinname="Label" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="4" srcpinname="Y Output Value" dstnodeid="28" dstpinname="PanTiltXY">
-   </LINK>
-   <LINK srcnodeid="3" srcpinname="Color Output" dstnodeid="28" dstpinname="Color">
-   </LINK>
-   <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="28" dstpinname="Address">
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="32" systemname="IOBox (String)">
    <BOUNDS type="Node" left="570" top="840" width="2745" height="270">
    </BOUNDS>
@@ -141,9 +127,9 @@
    </PIN>
    </NODE>
    <NODE systemname="AsRaw (Value)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="AsRaw (Value)" componentmode="Hidden" id="34">
-   <BOUNDS type="Node" left="7485" top="6585" width="100" height="100">
+   <BOUNDS type="Node" left="7470" top="7725" width="100" height="100">
    </BOUNDS>
-   <PIN pinname="Input" visible="1" slicecount="255" values="0,227,25,43,15,194,6,236,1,207,205,0,117,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
+   <PIN pinname="Input" visible="1" slicecount="512" values="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0">
    </PIN>
    <PIN pinname="Format" slicecount="1" values="Byte">
    </PIN>
@@ -151,125 +137,13 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (Node)" componentmode="InABox" id="35" systemname="IOBox (Node)">
-   <BOUNDS type="Box" left="7485" top="7095" width="4380" height="3060">
+   <BOUNDS type="Box" left="7470" top="8235" width="4380" height="3060">
    </BOUNDS>
-   <BOUNDS type="Node" left="7485" top="7095" width="0" height="0">
+   <BOUNDS type="Node" left="7470" top="8235" width="0" height="0">
    </BOUNDS>
    </NODE>
    <LINK srcnodeid="34" srcpinname="Output" dstnodeid="35" dstpinname="Input Node">
    </LINK>
-   <NODE systemname="Group (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="Group (DMX)" componentmode="Hidden" id="36">
-   <BOUNDS type="Node" left="3090" top="4095" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Fixture" visible="1">
-   </PIN>
-   <PIN pinname="Label" visible="1">
-   </PIN>
-   <PIN pinname="Fixture 2" slicecount="1" values="||">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="28" srcpinname="Fixture" dstnodeid="36" dstpinname="Fixture 1">
-   </LINK>
-   <NODE systemname="Fixture2Bytes (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="Fixture2Bytes (DMX)" componentmode="Hidden" id="37">
-   <BOUNDS type="Node" left="2925" top="5880" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Fixture" visible="1" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Packet" visible="1">
-   </PIN>
-   <PIN pinname="Labels" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="37" srcpinname="Packet" dstnodeid="20" dstpinname="Y Input Value">
-   </LINK>
-   <NODE nodename="IOBox (Color)" componentmode="InABox" id="42" systemname="IOBox (Color)">
-   <BOUNDS type="Box" left="9510" top="3525" width="1545" height="405">
-   </BOUNDS>
-   <BOUNDS type="Node" left="9510" top="3525" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.87024,0.35281,0.00000,1.00000|">
-   </PIN>
-   <PIN pinname="Color Output" visible="1">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="41" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="11160" top="3555" width="795" height="480">
-   </BOUNDS>
-   <BOUNDS type="Node" left="11160" top="3555" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0.2,0.08">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Vector Size" slicecount="1" values="2">
-   </PIN>
-   <PIN pinname="Rows" slicecount="1" values="2">
-   </PIN>
-   <PIN pinname="Minimum" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="Maximum" slicecount="1" values="1">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="40" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="7395" top="4050" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="7395" top="4050" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
-   </PIN>
-   <PIN pinname="Units" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Precision" slicecount="1" values="4">
-   </PIN>
-   <PIN pinname="Value Type" slicecount="1" values="Integer">
-   </PIN>
-   </NODE>
-   <NODE systemname="FixtureA (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="FixtureA (DMX)" componentmode="Hidden" id="39">
-   <BOUNDS type="Node" left="8220" top="4695" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Fixture" visible="1">
-   </PIN>
-   <PIN pinname="Label" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="41" srcpinname="Y Output Value" dstnodeid="39" dstpinname="PanTiltXY">
-   </LINK>
-   <LINK srcnodeid="42" srcpinname="Color Output" dstnodeid="39" dstpinname="Color">
-   </LINK>
-   <LINK srcnodeid="40" srcpinname="Y Output Value" dstnodeid="39" dstpinname="Address">
-   </LINK>
-   <LINK srcnodeid="37" srcpinname="Packet" dstnodeid="34" dstpinname="Input">
-   </LINK>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="43" systemname="IOBox (String)">
-   <BOUNDS type="Node" left="3885" top="4185" width="5835" height="270">
-   </BOUNDS>
-   <BOUNDS type="Box" left="3885" top="4185" width="3105" height="870">
-   </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="|&lt; returns another &quot;Fixture&quot; that can be grouped with more fixtures downstream&cr;&lf;missing: dynamic pin-count|">
-   </PIN>
-   <PIN pinname="Output String" visible="0">
-   </PIN>
-   <PIN pinname="Show Grid" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="String Type" slicecount="1" values="MultiLine">
-   </PIN>
-   </NODE>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="44" systemname="IOBox (String)">
-   <BOUNDS type="Node" left="9300" top="4665" width="1500" height="270">
-   </BOUNDS>
-   <BOUNDS type="Box" left="9300" top="4665" width="1500" height="270">
-   </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="|&lt; another FixtureA|">
-   </PIN>
-   <PIN pinname="Output String" visible="0">
-   </PIN>
-   <PIN pinname="Show Grid" slicecount="1" values="0">
-   </PIN>
-   <PIN pinname="String Type" slicecount="1" values="MultiLine">
-   </PIN>
-   </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="45" systemname="IOBox (String)">
    <BOUNDS type="Box" left="1935" top="2160" width="795" height="240">
    </BOUNDS>
@@ -284,8 +158,6 @@
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
    </NODE>
-   <LINK srcnodeid="45" srcpinname="Output String" dstnodeid="28" dstpinname="Label">
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="46" systemname="IOBox (String)">
    <BOUNDS type="Box" left="6240" top="1605" width="795" height="450">
    </BOUNDS>
@@ -306,70 +178,10 @@
    <PIN pinname="Rows" slicecount="1" values="2">
    </PIN>
    </NODE>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="47" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="8460" top="3975" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="8460" top="3975" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" visible="1" values="LampD">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="47" srcpinname="Output String" dstnodeid="39" dstpinname="Label">
-   </LINK>
-   <NODE systemname="Group (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="Group (DMX)" componentmode="Hidden" id="50">
-   <BOUNDS type="Node" left="2925" top="5385" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Label" visible="1">
-   </PIN>
-   <PIN pinname="Fixture" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="36" srcpinname="Fixture" dstnodeid="50" dstpinname="Fixture 1">
-   </LINK>
-   <LINK srcnodeid="39" srcpinname="Fixture" dstnodeid="50" dstpinname="Fixture 2">
-   </LINK>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="51" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="1365" top="5010" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="1365" top="5010" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" visible="1" values="Group2">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="51" srcpinname="Output String" dstnodeid="50" dstpinname="Label">
-   </LINK>
-   <NODE nodename="IOBox (String)" componentmode="InABox" id="52" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="1365" top="3615" width="795" height="240">
-   </BOUNDS>
-   <BOUNDS type="Node" left="1365" top="3615" width="0" height="0">
-   </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" visible="1" values="Group1">
-   </PIN>
-   <PIN pinname="Default" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="File Mask" slicecount="1" values="||">
-   </PIN>
-   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="52" srcpinname="Output String" dstnodeid="36" dstpinname="Label">
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="53" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="4380" top="6570" width="2640" height="3630">
+   <BOUNDS type="Box" left="4365" top="7710" width="2625" height="5160">
    </BOUNDS>
-   <BOUNDS type="Node" left="4380" top="6570" width="0" height="0">
+   <BOUNDS type="Node" left="4365" top="7710" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -377,27 +189,11 @@
    </PIN>
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
-   <PIN pinname="Rows" slicecount="1" values="20">
+   <PIN pinname="Rows" slicecount="1" values="25">
+   </PIN>
+   <PIN pinname="Input String" slicecount="512" values=",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,">
    </PIN>
    </NODE>
-   <LINK srcnodeid="37" srcpinname="Labels" dstnodeid="53" dstpinname="Input String">
-   </LINK>
-   <NODE systemname="FixtureB (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="FixtureB (DMX)" componentmode="Hidden" id="55">
-   <BOUNDS type="Node" left="6360" top="2265" width="100" height="100">
-   </BOUNDS>
-   <PIN pinname="Foo" visible="1">
-   </PIN>
-   <PIN pinname="Fixture" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="12" srcpinname="Color Output" dstnodeid="55" dstpinname="Color">
-   </LINK>
-   <LINK srcnodeid="14" srcpinname="Y Output Value" dstnodeid="55" dstpinname="Address">
-   </LINK>
-   <LINK srcnodeid="55" srcpinname="Fixture" dstnodeid="36" dstpinname="Fixture 2">
-   </LINK>
-   <LINK srcnodeid="46" srcpinname="Output String" dstnodeid="55" dstpinname="Label">
-   </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="56" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="7560" top="1755" width="450" height="645">
    </BOUNDS>
@@ -416,16 +212,12 @@
    <PIN pinname="Rows" slicecount="1" values="2">
    </PIN>
    </NODE>
-   <LINK srcnodeid="56" srcpinname="Y Output Value" dstnodeid="55" dstpinname="Foo">
-   </LINK>
-   <LINK srcnodeid="50" srcpinname="Fixture" dstnodeid="37" dstpinname="Fixture">
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="57" systemname="IOBox (String)">
-   <BOUNDS type="Node" left="4260" top="5880" width="4095" height="270">
+   <BOUNDS type="Node" left="4245" top="7020" width="4095" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="4260" top="5880" width="2370" height="495">
+   <BOUNDS type="Box" left="4245" top="7020" width="2370" height="495">
    </BOUNDS>
-   <PIN pinname="Input String" visible="0" slicecount="1" values="|&lt; takes a fixture and returns it as a spread of 512 bytes|">
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|&lt; takes a universe and returns it as a spread of 512 bytes|">
    </PIN>
    <PIN pinname="Output String" visible="0">
    </PIN>
@@ -435,9 +227,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="58" systemname="IOBox (String)">
-   <BOUNDS type="Node" left="8115" top="6585" width="2775" height="270">
+   <BOUNDS type="Node" left="8100" top="7725" width="2775" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="8115" top="6585" width="2760" height="285">
+   <BOUNDS type="Box" left="8100" top="7725" width="2760" height="285">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|&lt; convert to raw to be sent via udp...|">
    </PIN>
@@ -448,4 +240,228 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
+   <NODE id="47" nodename="IOBox (String)" componentmode="InABox" systemname="IOBox (String)">
+   <BOUNDS type="Box" left="8880" top="2820" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="8880" top="2820" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Input String" slicecount="1" visible="1" values="LampD">
+   </PIN>
+   <PIN pinname="Default" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="File Mask" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Maximum Characters" slicecount="1" values="-1">
+   </PIN>
+   </NODE>
+   <NODE id="44" nodename="IOBox (String)" componentmode="InABox" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="10230" top="4335" width="1500" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="10230" top="4335" width="1500" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|&lt; another FixtureA|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE id="40" nodename="IOBox (Value Advanced)" componentmode="InABox" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="7815" top="2895" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="7815" top="2895" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="6">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Value Type" slicecount="1" values="Integer">
+   </PIN>
+   </NODE>
+   <NODE id="41" nodename="IOBox (Value Advanced)" componentmode="InABox" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="11580" top="2400" width="795" height="480">
+   </BOUNDS>
+   <BOUNDS type="Node" left="11580" top="2400" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="2" visible="1" values="0,0.08">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Vector Size" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Rows" slicecount="1" values="2">
+   </PIN>
+   <PIN pinname="Minimum" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Maximum" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <NODE id="42" nodename="IOBox (Color)" componentmode="InABox" systemname="IOBox (Color)">
+   <BOUNDS type="Box" left="9930" top="2370" width="1545" height="405">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9930" top="2370" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Color Input" slicecount="1" visible="1" values="|0.87024,0.35281,0.00000,1.00000|">
+   </PIN>
+   <PIN pinname="Color Output" visible="1">
+   </PIN>
+   </NODE>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="61" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="3855" top="4770" width="2760" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3855" top="4770" width="2760" height="270">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|&lt; returns a universe of 512 channels|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE id="62" systemname="FixtureA (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="FixtureA (DMX)" componentmode="Hidden">
+   <BOUNDS type="Node" left="8715" top="4260" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Dimmer" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="42" srcpinname="Color Output" dstnodeid="62" dstpinname="Color">
+   </LINK>
+   <LINK srcnodeid="41" srcpinname="Y Output Value" dstnodeid="62" dstpinname="PanTiltXY">
+   </LINK>
+   <LINK srcnodeid="40" srcpinname="Y Output Value" dstnodeid="62" dstpinname="Address">
+   </LINK>
+   <LINK srcnodeid="47" srcpinname="Output String" dstnodeid="62" dstpinname="Label">
+   </LINK>
+   <NODE systemname="FixtureA (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="FixtureA (DMX)" componentmode="Hidden" id="63">
+   <BOUNDS type="Node" left="1770" top="3465" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Dimmer" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="4" srcpinname="Y Output Value" dstnodeid="63" dstpinname="PanTiltXY">
+   </LINK>
+   <LINK srcnodeid="3" srcpinname="Color Output" dstnodeid="63" dstpinname="Color">
+   </LINK>
+   <LINK srcnodeid="15" srcpinname="Y Output Value" dstnodeid="63" dstpinname="Address">
+   </LINK>
+   <LINK srcnodeid="45" srcpinname="Output String" dstnodeid="63" dstpinname="Label">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="65" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="2130" top="2805" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="2130" top="2805" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.06">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Minimum" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Maximum" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="65" srcpinname="Y Output Value" dstnodeid="63" dstpinname="Dimmer">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="66" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="6630" top="2460" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="6630" top="2460" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Minimum" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Maximum" slicecount="1" values="1">
+   </PIN>
+   <PIN pinname="Y Output Value" visible="1">
+   </PIN>
+   </NODE>
+   <NODE systemname="FixtureB (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="FixtureB (DMX)" componentmode="Hidden" id="67">
+   <BOUNDS type="Node" left="6435" top="2985" width="100" height="100">
+   </BOUNDS>
+   </NODE>
+   <LINK srcnodeid="12" srcpinname="Color Output" dstnodeid="67" dstpinname="Color">
+   </LINK>
+   <LINK srcnodeid="14" srcpinname="Y Output Value" dstnodeid="67" dstpinname="Address">
+   </LINK>
+   <LINK srcnodeid="46" srcpinname="Output String" dstnodeid="67" dstpinname="Label">
+   </LINK>
+   <LINK srcnodeid="56" srcpinname="Y Output Value" dstnodeid="67" dstpinname="Foo">
+   </LINK>
+   <LINK srcnodeid="66" srcpinname="Y Output Value" dstnodeid="67" dstpinname="Dimmer">
+   </LINK>
+   <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="68" systemname="IOBox (Value Advanced)">
+   <BOUNDS type="Box" left="9075" top="3690" width="795" height="240">
+   </BOUNDS>
+   <BOUNDS type="Node" left="9075" top="3690" width="0" height="0">
+   </BOUNDS>
+   <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0.09">
+   </PIN>
+   <PIN pinname="Units" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Precision" slicecount="1" values="4">
+   </PIN>
+   <PIN pinname="Minimum" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="Maximum" slicecount="1" values="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="68" srcpinname="Y Output Value" dstnodeid="62" dstpinname="Dimmer">
+   </LINK>
+   <NODE nodename="IOBox (String)" componentmode="InABox" id="69" systemname="IOBox (String)">
+   <BOUNDS type="Node" left="3105" top="5265" width="2940" height="270">
+   </BOUNDS>
+   <BOUNDS type="Box" left="3105" top="5265" width="5475" height="1575">
+   </BOUNDS>
+   <PIN pinname="Input String" visible="0" slicecount="1" values="|NodeName: UpdateChannel&cr;&lf;Input Pins:&cr;&lf;- Universe&cr;&lf;- Label: all channels matching that label will be updated&cr;&lf;- Value: all matched channels will receive that value. HTP or LTP&cr;&lf;Output Pins:&cr;&lf;- Universe|">
+   </PIN>
+   <PIN pinname="Output String" visible="0">
+   </PIN>
+   <PIN pinname="Show Grid" slicecount="1" values="0">
+   </PIN>
+   <PIN pinname="String Type" slicecount="1" values="MultiLine">
+   </PIN>
+   </NODE>
+   <NODE systemname="Universe2Bytes (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="Fixture2Bytes (DMX)" componentmode="Hidden" id="71">
+   <BOUNDS type="Node" left="2910" top="7020" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Universe" slicecount="1" values="||">
+   </PIN>
+   <PIN pinname="Universe Bin Size" slicecount="1" visible="1" values="512">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="71" srcpinname="Packet" dstnodeid="20" dstpinname="Y Input Value">
+   </LINK>
+   <LINK srcnodeid="71" srcpinname="Packet" dstnodeid="34" dstpinname="Input">
+   </LINK>
+   <LINK srcnodeid="71" srcpinname="Labels" dstnodeid="53" dstpinname="Input String">
+   </LINK>
+   <NODE systemname="Merge (DMX)" filename="vl\VVVV.DMX.FixtureA.vl" nodename="Group (DMX)" componentmode="Hidden" id="72">
+   <BOUNDS type="Node" left="2910" top="4770" width="100" height="100">
+   </BOUNDS>
+   <PIN pinname="Universe Bin Size" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="62" srcpinname="Fixture" dstnodeid="72" dstpinname="Fixture 3">
+   </LINK>
+   <LINK srcnodeid="63" srcpinname="Fixture" dstnodeid="72" dstpinname="Fixture 1">
+   </LINK>
+   <LINK srcnodeid="67" srcpinname="Fixture" dstnodeid="72" dstpinname="Fixture 2">
+   </LINK>
+   <LINK srcnodeid="72" srcpinname="Universe" dstnodeid="71" dstpinname="Universe">
+   </LINK>
    </PATCH>

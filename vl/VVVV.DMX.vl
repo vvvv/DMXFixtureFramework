@@ -25,16 +25,19 @@
         </LAYERS>
         <INLETS>
           <INLET Name="Address" Layer="Update" Type="Integer32">
-            <POSITION x="82" y="36.2727356" />
+            <POSITION x="-26" y="40.2727356" />
           </INLET>
           <INLET Name="Label" Layer="Update">
-            <POSITION x="156" y="36.2727356" />
+            <POSITION x="54" y="40.2727356" />
           </INLET>
           <INLET Name="Color" Layer="Update">
-            <POSITION x="211.454529" y="36.2727356" />
+            <POSITION x="211.454529" y="40.2727356" />
           </INLET>
           <INLET Name="PanTilt" Layer="Update">
-            <POSITION x="292" y="36.2727356" />
+            <POSITION x="292" y="40.2727356" />
+          </INLET>
+          <INLET Name="Dimmer" Layer="Update">
+            <POSITION x="139" y="40.2727356" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -51,12 +54,16 @@
             <POSITION x="482" y="90" />
             <VALUE><![CDATA["Tilt"]]></VALUE>
           </CONST>
+          <CONST Name="Label" Layer="Update">
+            <POSITION x="143" y="87" />
+            <VALUE><![CDATA["Dimmer"]]></VALUE>
+          </CONST>
         </CONSTS>
         <REGIONS />
         <NODES>
           <OPERATION Name="Create" Layer="Update">
             <POSITION x="116.181824" y="251.818176" />
-            <NODEREF LastCat="VVVV.DMX.Fixture" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Fixture" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Fixture" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -79,6 +86,7 @@
               <INPUT Name="Input" />
               <INPUT Name="Input 2" />
               <INPUT Name="Input 3" />
+              <INPUT Name="Input 4" />
               <INPUT Name="Enabled" />
             </INPUTS>
             <OUTPUTS>
@@ -87,7 +95,7 @@
           </OPERATION>
           <OPERATION Name="RGBAToChannels" Layer="Update">
             <POSITION x="201" y="120" />
-            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.vl">
               <OPERATIONNODE Name="RGBAToChannels" />
             </NODEREF>
             <INPUTS>
@@ -99,7 +107,7 @@
           </OPERATION>
           <OPERATION Name="Vector2ToChannels" Layer="Update">
             <POSITION x="351" y="119" />
-            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.vl">
               <OPERATIONNODE Name="Vector2ToChannels" />
             </NODEREF>
             <INPUTS>
@@ -111,6 +119,19 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
+          <OPERATION Name="Float2Channel" Layer="Update">
+            <POSITION x="98" y="118" />
+            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.vl">
+              <OPERATIONNODE Name="Float2Channel" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Label" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Channel" />
+            </OUTPUTS>
+          </OPERATION>
         </NODES>
         <LINKS>
           <Link source="Inlets/Address" sink="Nodes/Create/Inputs/Address" />
@@ -118,11 +139,14 @@
           <Link source="Nodes/Concat/Outputs/Output" sink="Nodes/Create/Inputs/Channels" />
           <Link source="Inlets/Label" sink="Nodes/Create/Inputs/Label" />
           <Link source="Inlets/Color" sink="Nodes/RGBAToChannels/Inputs/Input" />
-          <Link source="Nodes/RGBAToChannels/Outputs/Output" sink="Nodes/Concat/Inputs/Input" />
           <Link source="Inlets/PanTilt" sink="Nodes/Vector2ToChannels/Inputs/Input" />
           <Link source="Constants/Label X" sink="Nodes/Vector2ToChannels/Inputs/Label X" />
           <Link source="Constants/Label Y" sink="Nodes/Vector2ToChannels/Inputs/Label Y" />
-          <Link source="Nodes/Vector2ToChannels/Outputs/Output" sink="Nodes/Concat/Inputs/Input 2" />
+          <Link source="Inlets/Dimmer" sink="Nodes/Float2Channel/Inputs/Input" />
+          <Link source="Nodes/Float2Channel/Outputs/Channel" sink="Nodes/Concat/Inputs/Input" />
+          <Link source="Nodes/RGBAToChannels/Outputs/Output" sink="Nodes/Concat/Inputs/Input 2" />
+          <Link source="Nodes/Vector2ToChannels/Outputs/Output" sink="Nodes/Concat/Inputs/Input 3" />
+          <Link source="Constants/Label" sink="Nodes/Float2Channel/Inputs/Label" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -194,16 +218,19 @@
         </LAYERS>
         <INLETS>
           <INLET Name="Address" Layer="Update" Type="Integer32">
-            <POSITION x="229" y="207" />
-          </INLET>
-          <INLET Name="Color" Layer="Update">
-            <POSITION x="373.454529" y="207" />
-          </INLET>
-          <INLET Name="Foo" Layer="Update">
-            <POSITION x="476" y="207" />
+            <POSITION x="116" y="212" />
           </INLET>
           <INLET Name="Label" Layer="Update">
-            <POSITION x="306" y="207" />
+            <POSITION x="181" y="212" />
+          </INLET>
+          <INLET Name="Color" Layer="Update">
+            <POSITION x="373.454529" y="212" />
+          </INLET>
+          <INLET Name="Foo" Layer="Update">
+            <POSITION x="476" y="212" />
+          </INLET>
+          <INLET Name="Dimmer" Layer="Update">
+            <POSITION x="271" y="212" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -213,19 +240,19 @@
         </OUTLETS>
         <CONSTS>
           <CONST Name="Label" Layer="Update">
-            <POSITION x="545" y="308" />
+            <POSITION x="641" y="334" />
             <VALUE><![CDATA["Foo"]]></VALUE>
           </CONST>
-          <CONST Name="Count" Layer="Update">
-            <POSITION x="407" y="438" />
-            <VALUE><![CDATA[1]]></VALUE>
+          <CONST Name="Label#1" Layer="Update">
+            <POSITION x="333" y="330" />
+            <VALUE><![CDATA["Dimmer"]]></VALUE>
           </CONST>
         </CONSTS>
         <REGIONS />
         <NODES>
           <OPERATION Name="Create" Layer="Update">
             <POSITION x="290.181824" y="584.5454" />
-            <NODEREF LastCat="VVVV.DMX.Fixture" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Fixture" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Fixture" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -238,24 +265,9 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="Concat" Layer="Update">
-            <POSITION x="340" y="534" />
-            <NODEREF LastCat="Collections.Spread" LastFile="VL.Lib.Basics.dll">
-              <OPERATIONNODE Name="Concat" />
-              <CATEGORY Name="Spread" IsDirectParent="true" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Input" />
-              <INPUT Name="Input 2" />
-              <INPUT Name="Enabled" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Output" />
-            </OUTPUTS>
-          </OPERATION>
           <OPERATION Name="RGBAToChannels" Layer="Update">
-            <POSITION x="332" y="295" />
-            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.FixtureA.vl">
+            <POSITION x="407" y="370" />
+            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.vl">
               <OPERATIONNODE Name="RGBAToChannels" />
             </NODEREF>
             <INPUTS>
@@ -265,24 +277,316 @@
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="Create#1" Layer="Update">
-            <POSITION x="467" y="334" />
-            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
-              <OPERATIONNODE Name="Create" />
-              <CATEGORY Name="Channel" IsDirectParent="true" />
+          <OPERATION Name="IntToChannel" Layer="Update">
+            <POSITION x="554" y="372" />
+            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.vl">
+              <OPERATIONNODE Name="IntToChannel" />
             </NODEREF>
             <INPUTS>
-              <INPUT Name="Value" />
+              <INPUT Name="Input" />
               <INPUT Name="Label" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Channel" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Float2Channel" Layer="Update">
+            <POSITION x="278" y="373" />
+            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.vl">
+              <OPERATIONNODE Name="Float2Channel" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Label" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Channel" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Concat#1" Layer="Update">
+            <POSITION x="405" y="545" />
+            <NODEREF LastCat="Collections.Spread" LastFile="VL.Lib.Basics.dll">
+              <OPERATIONNODE Name="Concat" />
+              <CATEGORY Name="Spread" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Input 4" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+        </NODES>
+        <LINKS>
+          <Link source="Nodes/Create/Outputs/Output" sink="Outlets/Fixture" />
+          <Link source="Inlets/Address" sink="Nodes/Create/Inputs/Address" />
+          <Link source="Inlets/Label" sink="Nodes/Create/Inputs/Label" />
+          <Link source="Inlets/Color" sink="Nodes/RGBAToChannels/Inputs/Input" />
+          <Link source="Inlets/Foo" sink="Nodes/IntToChannel/Inputs/Input" />
+          <Link source="Nodes/Float2Channel/Outputs/Channel" sink="Nodes/Concat#1/Inputs/Input" />
+          <Link source="Nodes/RGBAToChannels/Outputs/Output" sink="Nodes/Concat#1/Inputs/Input 2" />
+          <Link source="Nodes/IntToChannel/Outputs/Channel" sink="Nodes/Concat#1/Inputs/Input 3" />
+          <Link source="Nodes/Concat#1/Outputs/Output" sink="Nodes/Create/Inputs/Channels" />
+          <Link source="Inlets/Dimmer" sink="Nodes/Float2Channel/Inputs/Input" />
+          <Link source="Constants/Label" sink="Nodes/IntToChannel/Inputs/Label" />
+          <Link source="Constants/Label#1" sink="Nodes/Float2Channel/Inputs/Label" />
+        </LINKS>
+      </BODY>
+    </PATCH>
+    <PATCH Name="Merge" Category="VVVV.DMX" IsDatatype="true" IsClosed="true" IsMutable="true">
+      <BODY Name="UtilsBody">
+        <LAYERS>
+          <LAYER Name="Create" />
+          <LAYER Name="Update" />
+        </LAYERS>
+        <INLETS>
+          <INLET Name="Fixture 1" Layer="Update" Type="Sequence">
+            <POSITION x="168" y="36" />
+          </INLET>
+          <INLET Name="Fixture 2" Layer="Update" Type="Sequence">
+            <POSITION x="278" y="36" />
+          </INLET>
+          <INLET Name="Fixture 3" Layer="Update" Type="Sequence">
+            <POSITION x="361" y="36" />
+          </INLET>
+        </INLETS>
+        <OUTLETS>
+          <OUTLET Name="Universe" Layer="Update">
+            <POSITION x="428.7846" y="817.7777" />
+          </OUTLET>
+        </OUTLETS>
+        <CONSTS>
+          <CONST Name="Iteration Count" Layer="Update">
+            <POSITION x="461.142578" y="80.77777" />
+            <VALUE><![CDATA[512]]></VALUE>
+          </CONST>
+        </CONSTS>
+        <REGIONS>
+          <REGION Name="ForEachLoop" Layer="Update" Kind="ForEachLoop">
+            <POSITION x="186.067215" y="204.596283" />
+            <SIZE x="227" y="157" />
+            <INPUTS>
+              <INPUT Name="Fixtures" />
+              <INPUT Name="Universe" IsAccumulator="true" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Universe" IsAccumulator="true" />
+            </OUTPUTS>
+            <BODY Name="ForEachLoopBody">
+              <LAYERS>
+                <LAYER Name="Create" />
+                <LAYER Name="Update" />
+                <LAYER Name="Destroy" />
+              </LAYERS>
+              <INLETS>
+                <INLET Name="Fixture" Layer="Update">
+                  <POSITION x="228.387268" y="206.224457" />
+                </INLET>
+                <INLET Name="Universe" Layer="Update" PadType="Accumulator">
+                  <POSITION x="393.169861" y="334.716553" />
+                </INLET>
+              </INLETS>
+              <OUTLETS>
+                <OUTLET Name="Universe" Layer="Update" PadType="Accumulator">
+                  <POSITION x="393.996338" y="768.2533" />
+                </OUTLET>
+              </OUTLETS>
+              <CONSTS />
+              <REGIONS>
+                <REGION Name="ForLoop" Layer="Update" Kind="ForLoop">
+                  <POSITION x="214.669861" y="364.74115" />
+                  <SIZE x="158" y="178" />
+                  <INPUTS>
+                    <INPUT Name="Iteration Count" />
+                    <INPUT Name="Universe" IsAccumulator="true" />
+                    <INPUT Name="Channels" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Universe" IsAccumulator="true" />
+                  </OUTPUTS>
+                  <BODY Name="ForLoopBody">
+                    <LAYERS>
+                      <LAYER Name="Create" />
+                      <LAYER Name="Update" />
+                      <LAYER Name="Destroy" />
+                    </LAYERS>
+                    <INLETS>
+                      <INLET Name="Universe" Layer="Update" PadType="Accumulator">
+                        <POSITION x="217.169861" y="467.7166" />
+                      </INLET>
+                      <INLET Name="Channel" Layer="Update">
+                        <POSITION x="275.847534" y="366.369324" />
+                      </INLET>
+                      <INLET Name="Index" Layer="Update" PadType="Iteration">
+                        <POSITION x="368.169861" y="393.716431" />
+                      </INLET>
+                    </INLETS>
+                    <OUTLETS>
+                      <OUTLET Name="Universe" Layer="Update" PadType="Accumulator">
+                        <POSITION x="223.996338" y="734.2533" />
+                      </OUTLET>
+                    </OUTLETS>
+                    <CONSTS />
+                    <REGIONS />
+                    <NODES>
+                      <OPERATION Name="SetSlice" Layer="Update">
+                        <POSITION x="256.161621" y="670.1129" />
+                        <NODEREF LastCat="Collections.Spread" LastFile="VL.Lib.Basics.dll">
+                          <OPERATIONNODE Name="SetSlice" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Input" />
+                          <INPUT Name="Value" />
+                          <INPUT Name="Index" />
+                          <INPUT Name="Enabled" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Output" />
+                        </OUTPUTS>
+                      </OPERATION>
+                      <OPERATION Name="+" Layer="Update">
+                        <POSITION x="345.169861" y="429.716431" />
+                        <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
+                          <OPERATIONNODE Name="+" />
+                          <CATEGORY Name="Adaptive" IsDirectParent="true" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Input" />
+                          <INPUT Name="Input 2" />
+                          <INPUT Name="Input 3" />
+                          <INPUT Name="Enabled" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Output" />
+                        </OUTPUTS>
+                      </OPERATION>
+                      <OPERATION Name="Prefix" Layer="Update">
+                        <POSITION x="275.649841" y="403.443237" />
+                        <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
+                          <OPERATIONNODE Name="Prefix" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Input" />
+                          <INPUT Name="Label" />
+                          <INPUT Name="Enabled" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Output" />
+                        </OUTPUTS>
+                      </OPERATION>
+                      <OPERATION Name="GetSlice" Layer="Update">
+                        <POSITION x="255.599335" y="521.8884" />
+                        <NODEREF LastCat="Collections.Spread" LastFile="VL.Lib.Basics.dll">
+                          <OPERATIONNODE Name="GetSlice" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Input" />
+                          <INPUT Name="Default Value" />
+                          <INPUT Name="Index" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Result" />
+                        </OUTPUTS>
+                      </OPERATION>
+                      <OPERATION Name="MergeChannels" Layer="Update">
+                        <POSITION x="263.973755" y="591.1271" />
+                        <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.vl">
+                          <OPERATIONNODE Name="MergeChannels" />
+                        </NODEREF>
+                        <INPUTS>
+                          <INPUT Name="Channel 1" />
+                          <INPUT Name="Channel 2" />
+                        </INPUTS>
+                        <OUTPUTS>
+                          <OUPUT Name="Output" />
+                        </OUTPUTS>
+                      </OPERATION>
+                    </NODES>
+                    <LINKS>
+                      <Link source="Inlets/Index" sink="Nodes/+/Inputs/Input 2" />
+                      <Link source="Inlets/Universe" sink="Nodes/SetSlice/Inputs/Input" />
+                      <Link source="Nodes/SetSlice/Outputs/Output" sink="Outlets/Universe" />
+                      <Link source="Inlets/Channel" sink="Nodes/Prefix/Inputs/Input" />
+                      <Link source="Inlets/Universe" sink="Nodes/GetSlice/Inputs/Input" />
+                      <Link source="Nodes/+/Outputs/Output" sink="Nodes/GetSlice/Inputs/Index" />
+                      <Link source="Nodes/GetSlice/Outputs/Result" sink="Nodes/MergeChannels/Inputs/Channel 1" />
+                      <Link source="Nodes/Prefix/Outputs/Output" sink="Nodes/MergeChannels/Inputs/Channel 2" />
+                      <Link source="Nodes/+/Outputs/Output" sink="Nodes/SetSlice/Inputs/Index" />
+                      <Link source="Nodes/MergeChannels/Outputs/Output" sink="Nodes/SetSlice/Inputs/Value" />
+                    </LINKS>
+                  </BODY>
+                </REGION>
+              </REGIONS>
+              <NODES>
+                <OPERATION Name="Split" Layer="Update">
+                  <POSITION x="234.169861" y="247.716583" />
+                  <NODEREF LastCat="VVVV.DMX.Fixture" LastFile="VVVV.DMX.vl">
+                    <OPERATIONNODE Name="Split" />
+                    <CATEGORY Name="Fixture" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Address" />
+                    <OUPUT Name="Label" />
+                    <OUPUT Name="Channels" />
+                  </OUTPUTS>
+                </OPERATION>
+                <OPERATION Name="Count" Layer="Update">
+                  <POSITION x="230.169876" y="312.716553" />
+                  <NODEREF LastCat="Collections.Spread" LastFile="VL.Core.dll">
+                    <OPERATIONNODE Name="Count" />
+                    <CATEGORY Name="Spread" IsDirectParent="true" />
+                  </NODEREF>
+                  <INPUTS>
+                    <INPUT Name="Input" />
+                  </INPUTS>
+                  <OUTPUTS>
+                    <OUPUT Name="Count" />
+                  </OUTPUTS>
+                </OPERATION>
+              </NODES>
+              <LINKS>
+                <Link source="Inlets/Fixture" sink="Nodes/Split/Inputs/Input" />
+                <Link source="Nodes/Split/Outputs/Channels" sink="Nodes/Count/Inputs/Input" />
+                <Link source="Nodes/Count/Outputs/Count" sink="Regions/ForLoop/Inputs/Iteration Count" />
+                <Link source="Nodes/Split/Outputs/Address" sink="Regions/ForLoop/ForLoopBody/Nodes/+/Inputs/Input" />
+                <Link source="Nodes/Split/Outputs/Channels" sink="Regions/ForLoop/Inputs/Channels" />
+                <Link source="Regions/ForLoop/Outputs/Universe" sink="Outlets/Universe" />
+                <Link source="Inlets/Universe" sink="Regions/ForLoop/Inputs/Universe" />
+                <Link source="Nodes/Split/Outputs/Label" sink="Regions/ForLoop/ForLoopBody/Nodes/Prefix/Inputs/Label" />
+              </LINKS>
+            </BODY>
+          </REGION>
+        </REGIONS>
+        <NODES>
+          <OPERATION Name="Concat" Layer="Update">
+            <POSITION x="208" y="89" />
+            <NODEREF LastCat="Collections.Sequence" LastFile="System.Core.dll">
+              <OPERATIONNODE Name="Concat" />
+              <CATEGORY Name="Sequence" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Input 4" />
+              <INPUT Name="Enabled" />
             </INPUTS>
             <OUTPUTS>
               <OUPUT Name="Output" />
             </OUTPUTS>
           </OPERATION>
           <OPERATION Name="Repeat" Layer="Update">
-            <POSITION x="359" y="467" />
-            <NODEREF LastCat="Collections.Sequence" LastFile="System.Interactive.dll">
+            <POSITION x="469.3872" y="124.224457" />
+            <NODEREF LastFile="System.Interactive.dll">
               <OPERATIONNODE Name="Repeat" />
+              <CATEGORYPATH Name="Collections.Sequence" />
             </NODEREF>
             <INPUTS>
               <INPUT Name="Element" />
@@ -292,8 +596,8 @@
               <OUPUT Name="Result" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="ToSpread" Layer="Update">
-            <POSITION x="358" y="495" />
+          <OPERATION Name="ToSpread#1" Layer="Update">
+            <POSITION x="469.3872" y="165.224457" />
             <NODEREF LastCat="Collections.Sequence" LastFile="VL.Core.dll">
               <OPERATIONNODE Name="ToSpread" />
               <CATEGORY Name="Sequence" IsDirectParent="true" />
@@ -305,163 +609,28 @@
               <OUPUT Name="Result" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="ToByte" Layer="Update">
-            <POSITION x="469" y="291" />
-            <NODEREF LastCat="Math.Integer32" LastFile="VL.Lib.Basics.dll">
-              <OPERATIONNODE Name="ToByte" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Input" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Result" />
-            </OUTPUTS>
-          </OPERATION>
-        </NODES>
-        <LINKS>
-          <Link source="Nodes/Create/Outputs/Output" sink="Outlets/Fixture" />
-          <Link source="Inlets/Address" sink="Nodes/Create/Inputs/Address" />
-          <Link source="Inlets/Label" sink="Nodes/Create/Inputs/Label" />
-          <Link source="Inlets/Color" sink="Nodes/RGBAToChannels/Inputs/Input" />
-          <Link source="Nodes/RGBAToChannels/Outputs/Output" sink="Nodes/Concat/Inputs/Input" />
-          <Link source="Constants/Label" sink="Nodes/Create#1/Inputs/Label" />
-          <Link source="Nodes/Create#1/Outputs/Output" sink="Nodes/Repeat/Inputs/Element" />
-          <Link source="Constants/Count" sink="Nodes/Repeat/Inputs/Count" />
-          <Link source="Nodes/Repeat/Outputs/Result" sink="Nodes/ToSpread/Inputs/Input" />
-          <Link source="Nodes/ToSpread/Outputs/Result" sink="Nodes/Concat/Inputs/Input 2" />
-          <Link source="Nodes/Concat/Outputs/Output" sink="Nodes/Create/Inputs/Channels" />
-          <Link source="Inlets/Foo" sink="Nodes/ToByte/Inputs/Input" />
-          <Link source="Nodes/ToByte/Outputs/Result" sink="Nodes/Create#1/Inputs/Value" />
-        </LINKS>
-      </BODY>
-    </PATCH>
-    <PATCH Name="Group" Category="VVVV.DMX" IsDatatype="true" IsClosed="true" IsMutable="true">
-      <BODY Name="UtilsBody">
-        <LAYERS>
-          <LAYER Name="Create" />
-          <LAYER Name="Update" />
-        </LAYERS>
-        <INLETS>
-          <INLET Name="Label" Layer="Update">
-            <POSITION x="69" y="36" />
-          </INLET>
-          <INLET Name="Fixture 1" Layer="Update" Type="Sequence">
-            <POSITION x="168" y="36" />
-          </INLET>
-          <INLET Name="Fixture 2" Layer="Update" Type="Sequence">
-            <POSITION x="278" y="36" />
-          </INLET>
-        </INLETS>
-        <OUTLETS>
-          <OUTLET Name="Fixture" Layer="Update">
-            <POSITION x="250" y="343" />
-          </OUTLET>
-        </OUTLETS>
-        <CONSTS />
-        <REGIONS />
-        <NODES>
-          <OPERATION Name="Concat" Layer="Update">
-            <POSITION x="208" y="78" />
-            <NODEREF LastCat="Collections.Sequence" LastFile="System.Core.dll">
-              <OPERATIONNODE Name="Concat" />
-              <CATEGORY Name="Sequence" IsDirectParent="true" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Input" />
-              <INPUT Name="Input 2" />
-              <INPUT Name="Input 3" />
-              <INPUT Name="Enabled" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Output" />
-            </OUTPUTS>
-          </OPERATION>
-          <OPERATION Name="Create" Layer="Update">
-            <POSITION x="250" y="294" />
-            <NODEREF LastCat="VVVV.DMX.Fixture" LastFile="VVVV.DMX.FixtureA.vl">
-              <CATEGORY Name="Fixture" />
-              <OPERATIONNODE Name="Create" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Address" />
-              <INPUT Name="Label" />
-              <INPUT Name="Channels" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Output" />
-            </OUTPUTS>
-          </OPERATION>
-          <OPERATION Name="GetSpread" Layer="Update">
-            <POSITION x="298" y="243" />
-            <NODEREF LastCat="Collections.Spread" LastFile="VL.Lib.Basics.dll">
-              <OPERATIONNODE Name="GetSpread" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Input" />
-              <INPUT Name="Index" />
-              <INPUT Name="Count" />
-              <INPUT Name="Enabled" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Output" />
-            </OUTPUTS>
-          </OPERATION>
-          <OPERATION Name="-" Layer="Update">
-            <POSITION x="331" y="209" />
-            <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
-              <OPERATIONNODE Name="-" />
-              <CATEGORY Name="Adaptive" IsDirectParent="true" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Input" />
-              <INPUT Name="Input 2" />
-              <INPUT Name="Input 3" />
-              <INPUT Name="Enabled" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Output" />
-            </OUTPUTS>
-          </OPERATION>
-          <OPERATION Name="Fixtures2Packet" Layer="Update">
-            <POSITION x="206" y="147" />
-            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.FixtureA.vl">
-              <OPERATIONNODE Name="Fixtures2Packet" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Fixtures" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Packet" />
-              <OUPUT Name="MinAddress" />
-              <OUPUT Name="MaxAddress" />
-            </OUTPUTS>
-          </OPERATION>
         </NODES>
         <LINKS>
           <Link source="Inlets/Fixture 1" sink="Nodes/Concat/Inputs/Input" />
           <Link source="Inlets/Fixture 2" sink="Nodes/Concat/Inputs/Input 2" />
-          <Link source="Nodes/-/Outputs/Output" sink="Nodes/GetSpread/Inputs/Count" />
-          <Link source="Nodes/GetSpread/Outputs/Output" sink="Nodes/Create/Inputs/Channels" />
-          <Link source="Nodes/Create/Outputs/Output" sink="Outlets/Fixture" />
-          <Link source="Nodes/Concat/Outputs/Output" sink="Nodes/Fixtures2Packet/Inputs/Fixtures" />
-          <Link source="Nodes/Fixtures2Packet/Outputs/Packet" sink="Nodes/GetSpread/Inputs/Input" />
-          <Link source="Nodes/Fixtures2Packet/Outputs/MinAddress" sink="Nodes/GetSpread/Inputs/Index" />
-          <Link source="Nodes/Fixtures2Packet/Outputs/MinAddress" sink="Nodes/Create/Inputs/Address" />
-          <Link source="Nodes/Fixtures2Packet/Outputs/MaxAddress" sink="Nodes/-/Inputs/Input" />
-          <Link source="Nodes/Fixtures2Packet/Outputs/MinAddress" sink="Nodes/-/Inputs/Input 2" />
-          <Link source="Inlets/Label" sink="Nodes/Create/Inputs/Label" />
+          <Link source="Inlets/Fixture 3" sink="Nodes/Concat/Inputs/Input 3" />
+          <Link source="Constants/Iteration Count" sink="Nodes/Repeat/Inputs/Count" />
+          <Link source="Nodes/Repeat/Outputs/Result" sink="Nodes/ToSpread#1/Inputs/Input" />
+          <Link source="Nodes/ToSpread#1/Outputs/Result" sink="Regions/ForEachLoop/Inputs/Universe" />
+          <Link source="Nodes/Concat/Outputs/Output" sink="Regions/ForEachLoop/Inputs/Fixtures" />
+          <Link source="Regions/ForEachLoop/Outputs/Universe" sink="Outlets/Universe" />
         </LINKS>
       </BODY>
     </PATCH>
-    <PATCH Name="Fixture2Bytes" Category="VVVV.DMX" IsDatatype="true" IsClosed="true" IsMutable="true">
+    <PATCH Name="Universe2Bytes" Category="VVVV.DMX" IsDatatype="true" IsClosed="true" IsMutable="true">
       <BODY Name="UtilsBody">
         <LAYERS>
           <LAYER Name="Update" />
           <LAYER Name="Create" />
         </LAYERS>
         <INLETS>
-          <INLET Name="Fixture" Layer="Update">
-            <POSITION x="307" y="65" />
+          <INLET Name="Universe" Layer="Update">
+            <POSITION x="198" y="107" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -475,7 +644,7 @@
         <CONSTS />
         <REGIONS>
           <REGION Name="Project" Layer="Update" Kind="ForEachLoop">
-            <POSITION x="205.206787" y="222" />
+            <POSITION x="195.5" y="189.75" />
             <SIZE x="100" y="100" />
             <INPUTS>
               <INPUT Name="Sources" />
@@ -491,22 +660,22 @@
               </LAYERS>
               <INLETS>
                 <INLET Name="Source" Layer="Update">
-                  <POSITION x="213.5" y="222.378174" />
+                  <POSITION x="201.5" y="191.378174" />
                 </INLET>
               </INLETS>
               <OUTLETS>
                 <OUTLET Name="Result" Layer="Update">
-                  <POSITION x="212.5" y="390.378174" />
+                  <POSITION x="200.5" y="359.378174" />
                 </OUTLET>
                 <OUTLET Name="Label" Layer="Update">
-                  <POSITION x="306" y="390.378174" />
+                  <POSITION x="294" y="359.378174" />
                 </OUTLET>
               </OUTLETS>
               <CONSTS />
               <REGIONS />
               <NODES>
                 <OPERATION Name="TryParse" Layer="Update">
-                  <POSITION x="216.206787" y="360.495544" />
+                  <POSITION x="204.206787" y="329.495544" />
                   <NODEREF LastCat="Math.Integer32" LastFile="VL.Lib.Basics.dll">
                     <CATEGORY Name="Integer32" />
                     <OPERATIONNODE Name="TryParse" />
@@ -520,7 +689,7 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="ToString" Layer="Update">
-                  <POSITION x="212.5" y="322.378174" />
+                  <POSITION x="200.5" y="291.378174" />
                   <NODEREF LastCat="Primitive.Byte" LastFile="Builtin">
                     <CATEGORY Name="Byte" />
                     <OPERATIONNODE Name="ToString" Version="Format" />
@@ -534,8 +703,8 @@
                   </OUTPUTS>
                 </OPERATION>
                 <OPERATION Name="Split" Layer="Update">
-                  <POSITION x="214" y="256" />
-                  <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
+                  <POSITION x="202" y="225" />
+                  <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
                     <CATEGORY Name="Channel" />
                     <OPERATIONNODE Name="Split" />
                   </NODEREF>
@@ -572,362 +741,12 @@
               <OUPUT Name="Result" />
             </OUTPUTS>
           </OPERATION>
-          <OPERATION Name="Fixtures2Packet" Layer="Update">
-            <POSITION x="216" y="165" />
-            <NODEREF LastCat="VVVV.DMX" LastFile="VVVV.DMX.FixtureA.vl">
-              <OPERATIONNODE Name="Fixtures2Packet" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Fixtures" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Packet" />
-              <OUPUT Name="MinAddress" />
-              <OUPUT Name="MaxAddress" />
-            </OUTPUTS>
-          </OPERATION>
         </NODES>
         <LINKS>
           <Link source="Nodes/ToSpread/Outputs/Result" sink="Outlets/Packet#1" />
-          <Link source="Inlets/Fixture" sink="Nodes/Fixtures2Packet/Inputs/Fixtures" />
-          <Link source="Nodes/Fixtures2Packet/Outputs/Packet" sink="Regions/Project/Inputs/Sources" />
           <Link source="Regions/Project/Outputs/Results" sink="Nodes/ToSpread/Inputs/Input" />
           <Link source="Regions/Project/Outputs/Labels" sink="Outlets/Labels" />
-        </LINKS>
-      </BODY>
-    </PATCH>
-    <PATCH Name="FixtureUtils" Category="VVVV.DMX">
-      <BODY Name="UtilsBody">
-        <LAYERS>
-          <LAYER Name="Fixtures2Packet" />
-        </LAYERS>
-        <INLETS>
-          <INLET Name="Fixtures" Layer="Fixtures2Packet">
-            <POSITION x="229" y="257" />
-          </INLET>
-        </INLETS>
-        <OUTLETS>
-          <OUTLET Name="Packet" Layer="Fixtures2Packet">
-            <POSITION x="485" y="890" />
-          </OUTLET>
-          <OUTLET Name="MinAddress" Layer="Fixtures2Packet">
-            <POSITION x="535" y="890" />
-          </OUTLET>
-          <OUTLET Name="MaxAddress" Layer="Fixtures2Packet">
-            <POSITION x="615" y="890" />
-          </OUTLET>
-        </OUTLETS>
-        <CONSTS>
-          <CONST Name="Iteration Count" Layer="Fixtures2Packet">
-            <POSITION x="545.358" y="223" />
-            <VALUE><![CDATA[512]]></VALUE>
-          </CONST>
-        </CONSTS>
-        <REGIONS>
-          <REGION Name="ForEachLoop" Layer="Fixtures2Packet" Kind="ForEachLoop">
-            <POSITION x="241" y="353.3185" />
-            <SIZE x="227" y="157" />
-            <INPUTS>
-              <INPUT Name="Fixtures" />
-              <INPUT Name="MinAddress" IsAccumulator="true" />
-              <INPUT Name="Packet" IsAccumulator="true" />
-              <INPUT Name="MaxAddress" IsAccumulator="true" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="MinAddress" IsAccumulator="true" />
-              <OUPUT Name="Packet" IsAccumulator="true" />
-              <OUPUT Name="MaxAddress" IsAccumulator="true" />
-            </OUTPUTS>
-            <BODY Name="ForEachLoopBody">
-              <LAYERS>
-                <LAYER Name="Create" />
-                <LAYER Name="Update" />
-              </LAYERS>
-              <INLETS>
-                <INLET Name="Fixture" Layer="Update">
-                  <POSITION x="236.602646" y="354.4467" />
-                </INLET>
-                <INLET Name="MinAddress" Layer="Update" PadType="Accumulator">
-                  <POSITION x="269.602661" y="479.4467" />
-                </INLET>
-                <INLET Name="Packet" Layer="Update" PadType="Accumulator">
-                  <POSITION x="389.602661" y="618.446655" />
-                </INLET>
-                <INLET Name="MaxAddress" Layer="Update" PadType="Accumulator">
-                  <POSITION x="486.602661" y="521.446655" />
-                </INLET>
-              </INLETS>
-              <OUTLETS>
-                <OUTLET Name="MinAddress" Layer="Update" PadType="Accumulator">
-                  <POSITION x="233.602661" y="576.446655" />
-                </OUTLET>
-                <OUTLET Name="Packet" Layer="Update" PadType="Accumulator">
-                  <POSITION x="388.602661" y="820.446655" />
-                </OUTLET>
-                <OUTLET Name="MaxAddress" Layer="Update" PadType="Accumulator">
-                  <POSITION x="481.602661" y="622.446655" />
-                </OUTLET>
-              </OUTLETS>
-              <CONSTS />
-              <REGIONS>
-                <REGION Name="ForLoop" Layer="Update" Kind="ForLoop">
-                  <POSITION x="240.102646" y="646.8185" />
-                  <SIZE x="158" y="178" />
-                  <INPUTS>
-                    <INPUT Name="Iteration Count" />
-                    <INPUT Name="Packet" IsAccumulator="true" />
-                    <INPUT Name="Channels" />
-                  </INPUTS>
-                  <OUTPUTS>
-                    <OUPUT Name="Packet" IsAccumulator="true" />
-                  </OUTPUTS>
-                  <BODY Name="ForLoopBody">
-                    <LAYERS>
-                      <LAYER Name="Create" />
-                      <LAYER Name="Update" />
-                    </LAYERS>
-                    <INLETS>
-                      <INLET Name="Packet" Layer="Update" PadType="Accumulator">
-                        <POSITION x="244.602646" y="717.446655" />
-                      </INLET>
-                      <INLET Name="Channel" Layer="Update">
-                        <POSITION x="321.602661" y="648.446655" />
-                      </INLET>
-                      <INLET Name="Index" Layer="Update" PadType="Iteration">
-                        <POSITION x="372.602661" y="677.446655" />
-                      </INLET>
-                    </INLETS>
-                    <OUTLETS>
-                      <OUTLET Name="Packet" Layer="Update" PadType="Accumulator">
-                        <POSITION x="242.602646" y="796.446655" />
-                      </OUTLET>
-                    </OUTLETS>
-                    <CONSTS />
-                    <REGIONS />
-                    <NODES>
-                      <OPERATION Name="SetSlice" Layer="Update">
-                        <POSITION x="288.602661" y="753.446655" />
-                        <NODEREF LastCat="Collections.Spread" LastFile="VL.Lib.Basics.dll">
-                          <OPERATIONNODE Name="SetSlice" />
-                        </NODEREF>
-                        <INPUTS>
-                          <INPUT Name="Input" />
-                          <INPUT Name="Value" />
-                          <INPUT Name="Index" />
-                          <INPUT Name="Enabled" />
-                        </INPUTS>
-                        <OUTPUTS>
-                          <OUPUT Name="Output" />
-                        </OUTPUTS>
-                      </OPERATION>
-                      <OPERATION Name="+" Layer="Update">
-                        <POSITION x="349.602661" y="713.446655" />
-                        <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
-                          <OPERATIONNODE Name="+" />
-                          <CATEGORY Name="Adaptive" IsDirectParent="true" />
-                        </NODEREF>
-                        <INPUTS>
-                          <INPUT Name="Input" />
-                          <INPUT Name="Input 2" />
-                          <INPUT Name="Input 3" />
-                          <INPUT Name="Enabled" />
-                        </INPUTS>
-                        <OUTPUTS>
-                          <OUPUT Name="Output" />
-                        </OUTPUTS>
-                      </OPERATION>
-                      <OPERATION Name="Prefix" Layer="Update">
-                        <POSITION x="290" y="688" />
-                        <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
-                          <OPERATIONNODE Name="Prefix" />
-                        </NODEREF>
-                        <INPUTS>
-                          <INPUT Name="Input" />
-                          <INPUT Name="Label" />
-                          <INPUT Name="Enabled" />
-                        </INPUTS>
-                        <OUTPUTS>
-                          <OUPUT Name="Output" />
-                        </OUTPUTS>
-                      </OPERATION>
-                    </NODES>
-                    <LINKS>
-                      <Link source="Inlets/Index" sink="Nodes/+/Inputs/Input 2" />
-                      <Link source="Nodes/+/Outputs/Output" sink="Nodes/SetSlice/Inputs/Index" />
-                      <Link source="Inlets/Packet" sink="Nodes/SetSlice/Inputs/Input" />
-                      <Link source="Nodes/SetSlice/Outputs/Output" sink="Outlets/Packet" />
-                      <Link source="Inlets/Channel" sink="Nodes/Prefix/Inputs/Input" />
-                      <Link source="Nodes/Prefix/Outputs/Output" sink="Nodes/SetSlice/Inputs/Value" />
-                    </LINKS>
-                  </BODY>
-                </REGION>
-              </REGIONS>
-              <NODES>
-                <OPERATION Name="Split" Layer="Update">
-                  <POSITION x="234.602646" y="382.4467" />
-                  <NODEREF LastCat="VVVV.DMX.Fixture" LastFile="VVVV.DMX.FixtureA.vl">
-                    <OPERATIONNODE Name="Split" />
-                    <CATEGORY Name="Fixture" IsDirectParent="true" />
-                  </NODEREF>
-                  <INPUTS>
-                    <INPUT Name="Input" />
-                  </INPUTS>
-                  <OUTPUTS>
-                    <OUPUT Name="Address" />
-                    <OUPUT Name="Label" />
-                    <OUPUT Name="Channels" />
-                  </OUTPUTS>
-                </OPERATION>
-                <OPERATION Name="Count" Layer="Update">
-                  <POSITION x="432.602661" y="468.446655" />
-                  <NODEREF LastCat="Collections.Spread" LastFile="VL.Core.dll">
-                    <OPERATIONNODE Name="Count" />
-                    <CATEGORY Name="Spread" IsDirectParent="true" />
-                  </NODEREF>
-                  <INPUTS>
-                    <INPUT Name="Input" />
-                  </INPUTS>
-                  <OUTPUTS>
-                    <OUPUT Name="Count" />
-                  </OUTPUTS>
-                </OPERATION>
-                <OPERATION Name="&lt;" Layer="Update">
-                  <POSITION x="236.602661" y="505.4467" />
-                  <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
-                    <OPERATIONNODE Name="&lt;" />
-                    <CATEGORY Name="Adaptive" IsDirectParent="true" />
-                  </NODEREF>
-                  <INPUTS>
-                    <INPUT Name="Input" />
-                    <INPUT Name="Input 2" />
-                  </INPUTS>
-                  <OUTPUTS>
-                    <OUPUT Name="Result" />
-                  </OUTPUTS>
-                </OPERATION>
-                <OPERATION Name="+" Layer="Update">
-                  <POSITION x="420.602661" y="524.446655" />
-                  <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
-                    <OPERATIONNODE Name="+" />
-                    <CATEGORY Name="Adaptive" IsDirectParent="true" />
-                  </NODEREF>
-                  <INPUTS>
-                    <INPUT Name="Input" />
-                    <INPUT Name="Input 2" />
-                    <INPUT Name="Input 3" />
-                    <INPUT Name="Enabled" />
-                  </INPUTS>
-                  <OUTPUTS>
-                    <OUPUT Name="Output" />
-                  </OUTPUTS>
-                </OPERATION>
-                <OPERATION Name="&gt;" Layer="Update">
-                  <POSITION x="418.602661" y="558.446655" />
-                  <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
-                    <OPERATIONNODE Name="&gt;" />
-                    <CATEGORY Name="Adaptive" IsDirectParent="true" />
-                  </NODEREF>
-                  <INPUTS>
-                    <INPUT Name="Input" />
-                    <INPUT Name="Input 2" />
-                  </INPUTS>
-                  <OUTPUTS>
-                    <OUPUT Name="Result" />
-                  </OUTPUTS>
-                </OPERATION>
-                <OPERATION Name="SwitchInput" Layer="Update">
-                  <POSITION x="452" y="588" />
-                  <NODEREF LastCat="Control" LastFile="Basics.vl">
-                    <OPERATIONNODE Name="SwitchInput" />
-                  </NODEREF>
-                  <INPUTS>
-                    <INPUT Name="Condition" />
-                    <INPUT Name="False" />
-                    <INPUT Name="True" />
-                  </INPUTS>
-                  <OUTPUTS>
-                    <OUPUT Name="Output" />
-                  </OUTPUTS>
-                </OPERATION>
-                <OPERATION Name="SwitchInput#1" Layer="Update">
-                  <POSITION x="238" y="544" />
-                  <NODEREF LastCat="Control" LastFile="Basics.vl">
-                    <OPERATIONNODE Name="SwitchInput" />
-                  </NODEREF>
-                  <INPUTS>
-                    <INPUT Name="Condition" />
-                    <INPUT Name="False" />
-                    <INPUT Name="True" />
-                  </INPUTS>
-                  <OUTPUTS>
-                    <OUPUT Name="Output" />
-                  </OUTPUTS>
-                </OPERATION>
-              </NODES>
-              <LINKS>
-                <Link source="Inlets/Fixture" sink="Nodes/Split/Inputs/Input" />
-                <Link source="Nodes/Split/Outputs/Channels" sink="Nodes/Count/Inputs/Input" />
-                <Link source="Nodes/Count/Outputs/Count" sink="Regions/ForLoop/Inputs/Iteration Count" />
-                <Link source="Nodes/Split/Outputs/Address" sink="Regions/ForLoop/ForLoopBody/Nodes/+/Inputs/Input" />
-                <Link source="Nodes/Split/Outputs/Channels" sink="Regions/ForLoop/Inputs/Channels" />
-                <Link source="Regions/ForLoop/Outputs/Packet" sink="Outlets/Packet" />
-                <Link source="Inlets/Packet" sink="Regions/ForLoop/Inputs/Packet" />
-                <Link source="Nodes/Split/Outputs/Address" sink="Nodes/&lt;/Inputs/Input" />
-                <Link source="Inlets/MinAddress" sink="Nodes/&lt;/Inputs/Input 2" />
-                <Link source="Nodes/Split/Outputs/Address" sink="Nodes/+/Inputs/Input" />
-                <Link source="Nodes/Count/Outputs/Count" sink="Nodes/+/Inputs/Input 2" />
-                <Link source="Nodes/+/Outputs/Output" sink="Nodes/&gt;/Inputs/Input" />
-                <Link source="Inlets/MaxAddress" sink="Nodes/&gt;/Inputs/Input 2" />
-                <Link source="Nodes/&gt;/Outputs/Result" sink="Nodes/SwitchInput/Inputs/Condition" />
-                <Link source="Nodes/+/Outputs/Output" sink="Nodes/SwitchInput/Inputs/True" />
-                <Link source="Inlets/MaxAddress" sink="Nodes/SwitchInput/Inputs/False" />
-                <Link source="Nodes/SwitchInput/Outputs/Output" sink="Outlets/MaxAddress" />
-                <Link source="Nodes/&lt;/Outputs/Result" sink="Nodes/SwitchInput#1/Inputs/Condition" />
-                <Link source="Inlets/MinAddress" sink="Nodes/SwitchInput#1/Inputs/False" />
-                <Link source="Nodes/Split/Outputs/Address" sink="Nodes/SwitchInput#1/Inputs/True" />
-                <Link source="Nodes/SwitchInput#1/Outputs/Output" sink="Outlets/MinAddress" />
-                <Link source="Nodes/Split/Outputs/Label" sink="Regions/ForLoop/ForLoopBody/Nodes/Prefix/Inputs/Label" />
-              </LINKS>
-            </BODY>
-          </REGION>
-        </REGIONS>
-        <NODES>
-          <OPERATION Name="Repeat" Layer="Fixtures2Packet">
-            <POSITION x="553.602661" y="266.4467" />
-            <NODEREF LastCat="Collections.Sequence" LastFile="System.Interactive.dll">
-              <OPERATIONNODE Name="Repeat" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Element" />
-              <INPUT Name="Count" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Result" />
-            </OUTPUTS>
-          </OPERATION>
-          <OPERATION Name="ToSpread#1" Layer="Fixtures2Packet">
-            <POSITION x="553.602661" y="307.4467" />
-            <NODEREF LastCat="Collections.Sequence" LastFile="VL.Core.dll">
-              <OPERATIONNODE Name="ToSpread" />
-              <CATEGORY Name="Sequence" IsDirectParent="true" />
-            </NODEREF>
-            <INPUTS>
-              <INPUT Name="Input" />
-            </INPUTS>
-            <OUTPUTS>
-              <OUPUT Name="Result" />
-            </OUTPUTS>
-          </OPERATION>
-        </NODES>
-        <LINKS>
-          <Link source="Constants/Iteration Count" sink="Nodes/Repeat/Inputs/Count" />
-          <Link source="Constants/Iteration Count" sink="Regions/ForEachLoop/Inputs/MinAddress" />
-          <Link source="Nodes/Repeat/Outputs/Result" sink="Nodes/ToSpread#1/Inputs/Input" />
-          <Link source="Nodes/ToSpread#1/Outputs/Result" sink="Regions/ForEachLoop/Inputs/Packet" />
-          <Link source="Inlets/Fixtures" sink="Regions/ForEachLoop/Inputs/Fixtures" />
-          <Link source="Regions/ForEachLoop/Outputs/Packet" sink="Outlets/Packet" />
-          <Link source="Regions/ForEachLoop/Outputs/MinAddress" sink="Outlets/MinAddress" />
-          <Link source="Regions/ForEachLoop/Outputs/MaxAddress" sink="Outlets/MaxAddress" />
+          <Link source="Inlets/Universe" sink="Regions/Project/Inputs/Sources" />
         </LINKS>
       </BODY>
     </PATCH>
@@ -944,19 +763,19 @@
             <POSITION x="347.454559" y="182" />
           </INLET>
           <INLET Name="Value#1" Layer="Split" PadType="Field">
-            <POSITION x="443.2727" y="347.999969" />
+            <POSITION x="361.2727" y="383.999969" />
+          </INLET>
+          <INLET Name="Label#1" Layer="Split" PadType="Field">
+            <POSITION x="439.909119" y="388" />
           </INLET>
           <INLET Name="Label" Layer="Create" Type="String">
             <POSITION x="452.909119" y="182" />
           </INLET>
-          <INLET Name="Label#1" Layer="Split" PadType="Field">
-            <POSITION x="521.9091" y="352" />
-          </INLET>
           <INLET Name="Label#3" Layer="Prefix">
-            <POSITION x="651" y="277" />
+            <POSITION x="734" y="255" />
           </INLET>
           <INLET Name="Label#2" Layer="Prefix" PadType="Field">
-            <POSITION x="734" y="283" />
+            <POSITION x="817" y="261" />
           </INLET>
         </INLETS>
         <OUTLETS>
@@ -964,21 +783,21 @@
             <POSITION x="347" y="235.363632" />
           </OUTLET>
           <OUTLET Name="Value" Layer="Split">
-            <POSITION x="440.545471" y="388.454529" />
+            <POSITION x="358.545471" y="424.454529" />
+          </OUTLET>
+          <OUTLET Name="Label#1" Layer="Split">
+            <POSITION x="441.909119" y="424.454529" />
           </OUTLET>
           <OUTLET Name="Label" Layer="Create" PadType="Field">
             <POSITION x="459.909119" y="245" />
           </OUTLET>
-          <OUTLET Name="Label#1" Layer="Split">
-            <POSITION x="523.9091" y="388.454529" />
-          </OUTLET>
           <OUTLET Name="Label#2" Layer="Prefix" PadType="Field">
-            <POSITION x="666" y="382" />
+            <POSITION x="749" y="360" />
           </OUTLET>
         </OUTLETS>
         <CONSTS>
           <CONST Name="Input 2" Layer="Prefix">
-            <POSITION x="694" y="306" />
+            <POSITION x="777" y="284" />
             <SIZE width="37.151474" height="16.7563477" />
             <VALUE><![CDATA["/"]]></VALUE>
           </CONST>
@@ -986,7 +805,7 @@
         <REGIONS />
         <NODES>
           <OPERATION Name="+" Layer="Prefix">
-            <POSITION x="687" y="348" />
+            <POSITION x="770" y="326" />
             <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
               <OPERATIONNODE Name="+" />
               <CATEGORY Name="Adaptive" IsDirectParent="true" />
@@ -1021,13 +840,32 @@
           <LAYER Name="RGBAToChannels" />
           <LAYER Name="Vector3ToChannels" />
           <LAYER Name="Vector2ToChannels" />
+          <LAYER Name="MergeChannels" />
+          <LAYER Name="IntToChannel" />
+          <LAYER Name="Float2Channel" />
+          <LAYER Name="Update" />
         </LAYERS>
         <INLETS>
+          <INLET Name="Channel 1" Layer="MergeChannels">
+            <POSITION x="-47" y="613" />
+          </INLET>
+          <INLET Name="Channel 2" Layer="MergeChannels">
+            <POSITION x="76" y="613" />
+          </INLET>
           <INLET Name="Input#1" Layer="RGBAToChannels">
-            <POSITION x="122" y="99" />
+            <POSITION x="122" y="100" />
+          </INLET>
+          <INLET Name="Input#3" Layer="IntToChannel">
+            <POSITION x="255" y="662" />
+          </INLET>
+          <INLET Name="Input#4" Layer="Float2Channel">
+            <POSITION x="465" y="637" />
           </INLET>
           <INLET Name="Input" Layer="Vector2ToChannels">
             <POSITION x="545" y="57" />
+          </INLET>
+          <INLET Name="Label" Layer="Float2Channel">
+            <POSITION x="587" y="637" />
           </INLET>
           <INLET Name="Label X" Layer="Vector2ToChannels">
             <POSITION x="640" y="57" />
@@ -1047,10 +885,22 @@
           <INLET Name="Label Z#1" Layer="Vector3ToChannels">
             <POSITION x="1087" y="77" />
           </INLET>
+          <INLET Name="Label#1" Layer="IntToChannel">
+            <POSITION x="331" y="662" />
+          </INLET>
         </INLETS>
         <OUTLETS>
+          <OUTLET Name="Output#3" Layer="MergeChannels">
+            <POSITION x="-42" y="873" />
+          </OUTLET>
           <OUTLET Name="Output" Layer="RGBAToChannels">
             <POSITION x="197" y="498" />
+          </OUTLET>
+          <OUTLET Name="Channel" Layer="IntToChannel">
+            <POSITION x="255" y="943" />
+          </OUTLET>
+          <OUTLET Name="Channel#1" Layer="Float2Channel">
+            <POSITION x="465" y="972" />
           </OUTLET>
           <OUTLET Name="Output#1" Layer="Vector2ToChannels">
             <POSITION x="648" y="611" />
@@ -1080,6 +930,18 @@
             <POSITION x="918" y="104" />
             <VALUE><![CDATA[255.0]]></VALUE>
           </CONST>
+          <CONST Name="Input 2" Layer="Float2Channel">
+            <POSITION x="513" y="651" />
+            <VALUE><![CDATA[255.0]]></VALUE>
+          </CONST>
+          <CONST Name="Count" Layer="IntToChannel">
+            <POSITION x="310" y="807" />
+            <VALUE><![CDATA[1]]></VALUE>
+          </CONST>
+          <CONST Name="Count#1" Layer="Float2Channel">
+            <POSITION x="520" y="852" />
+            <VALUE><![CDATA[1]]></VALUE>
+          </CONST>
         </CONSTS>
         <REGIONS />
         <NODES>
@@ -1100,7 +962,7 @@
           </OPERATION>
           <OPERATION Name="Create#1" Layer="RGBAToChannels">
             <POSITION x="99" y="280" />
-            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Channel" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -1114,7 +976,7 @@
           </OPERATION>
           <OPERATION Name="Create" Layer="RGBAToChannels">
             <POSITION x="173" y="282" />
-            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Channel" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -1128,7 +990,7 @@
           </OPERATION>
           <OPERATION Name="Create#2" Layer="RGBAToChannels">
             <POSITION x="257" y="283" />
-            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Channel" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -1215,7 +1077,7 @@
           </OPERATION>
           <OPERATION Name="Create#3" Layer="Vector2ToChannels">
             <POSITION x="544" y="348" />
-            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Channel" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -1229,7 +1091,7 @@
           </OPERATION>
           <OPERATION Name="Create#4" Layer="Vector2ToChannels">
             <POSITION x="618" y="350" />
-            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Channel" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -1328,7 +1190,7 @@
           </OPERATION>
           <OPERATION Name="Create#6" Layer="Vector3ToChannels">
             <POSITION x="1036" y="377" />
-            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Channel" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -1357,7 +1219,7 @@
           </OPERATION>
           <OPERATION Name="Create#7" Layer="Vector3ToChannels">
             <POSITION x="952" y="376" />
-            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Channel" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -1413,7 +1275,7 @@
           </OPERATION>
           <OPERATION Name="Create#8" Layer="Vector3ToChannels">
             <POSITION x="878" y="374" />
-            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.FixtureA.vl">
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
               <CATEGORY Name="Channel" />
               <OPERATIONNODE Name="Create" />
             </NODEREF>
@@ -1556,6 +1418,197 @@
               <OUPUT Name="Result" />
             </OUTPUTS>
           </OPERATION>
+          <OPERATION Name="Split" Layer="MergeChannels">
+            <POSITION x="-45" y="680" />
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
+              <OPERATIONNODE Name="Split" />
+              <CATEGORY Name="Channel" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Value" />
+              <OUPUT Name="Label" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Split#1" Layer="MergeChannels">
+            <POSITION x="78" y="681" />
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
+              <OPERATIONNODE Name="Split" />
+              <CATEGORY Name="Channel" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Value" />
+              <OUPUT Name="Label" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="SwitchInput" Layer="MergeChannels">
+            <POSITION x="-40" y="828" />
+            <NODEREF LastCat="Control" LastFile="Basics.vl">
+              <OPERATIONNODE Name="SwitchInput" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Condition" />
+              <INPUT Name="False" />
+              <INPUT Name="True" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Create#9" Layer="IntToChannel">
+            <POSITION x="255" y="745" />
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
+              <OPERATIONNODE Name="Create" />
+              <CATEGORY Name="Channel" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Value" />
+              <INPUT Name="Label" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="ToByte#5" Layer="IntToChannel">
+            <POSITION x="255" y="702" />
+            <NODEREF LastCat="Math.Integer32" LastFile="VL.Lib.Basics.dll">
+              <OPERATIONNODE Name="ToByte" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Create#10" Layer="Float2Channel">
+            <POSITION x="465" y="803" />
+            <NODEREF LastCat="VVVV.DMX.Channel" LastFile="VVVV.DMX.vl">
+              <OPERATIONNODE Name="Create" />
+              <CATEGORY Name="Channel" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Value" />
+              <INPUT Name="Label" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="ToByte#6" Layer="Float2Channel">
+            <POSITION x="465" y="764" />
+            <NODEREF LastCat="Math.Integer32" LastFile="VL.Lib.Basics.dll">
+              <OPERATIONNODE Name="ToByte" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="*#2" Layer="Float2Channel">
+            <POSITION x="465" y="697" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
+              <OPERATIONNODE Name="*" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+              <INPUT Name="Input 3" />
+              <INPUT Name="Enabled" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Output" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Round#2" Layer="Float2Channel">
+            <POSITION x="465" y="724" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
+              <OPERATIONNODE Name="Round" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="ToSpread#3" Layer="IntToChannel">
+            <POSITION x="255" y="864" />
+            <NODEREF LastCat="Collections.Sequence" LastFile="VL.Core.dll">
+              <OPERATIONNODE Name="ToSpread" />
+              <CATEGORY Name="Sequence" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Repeat" Layer="IntToChannel">
+            <POSITION x="255" y="836" />
+            <NODEREF LastFile="System.Interactive.dll">
+              <OPERATIONNODE Name="Repeat" />
+              <CATEGORYPATH Name="Collections.Sequence" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Element" />
+              <INPUT Name="Count" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="ToSpread#4" Layer="Float2Channel">
+            <POSITION x="465" y="909" />
+            <NODEREF LastCat="Collections.Sequence" LastFile="VL.Core.dll">
+              <OPERATIONNODE Name="ToSpread" />
+              <CATEGORY Name="Sequence" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="Repeat#1" Layer="Float2Channel">
+            <POSITION x="465" y="881" />
+            <NODEREF LastFile="System.Interactive.dll">
+              <OPERATIONNODE Name="Repeat" />
+              <CATEGORYPATH Name="Collections.Sequence" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Element" />
+              <INPUT Name="Count" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
+          <OPERATION Name="&gt;" Layer="MergeChannels">
+            <POSITION x="-42" y="768" />
+            <NODEREF LastCat="Adaptive" LastFile="VL.Lib.Basics.dll">
+              <OPERATIONNODE Name="&gt;" />
+              <CATEGORY Name="Adaptive" IsDirectParent="true" />
+            </NODEREF>
+            <INPUTS>
+              <INPUT Name="Input" />
+              <INPUT Name="Input 2" />
+            </INPUTS>
+            <OUTPUTS>
+              <OUPUT Name="Result" />
+            </OUTPUTS>
+          </OPERATION>
         </NODES>
         <LINKS>
           <Link source="Nodes/ToBytes/Outputs/R" sink="Nodes/Create#1/Inputs/Value" />
@@ -1610,6 +1663,31 @@
           <Link source="Nodes/Round#3/Outputs/Result" sink="Nodes/ToByte#4/Inputs/Input" />
           <Link source="Nodes/ToByte#3/Outputs/Result" sink="Nodes/Create#7/Inputs/Value" />
           <Link source="Nodes/ToByte#4/Outputs/Result" sink="Nodes/Create#6/Inputs/Value" />
+          <Link source="Inlets/Channel 1" sink="Nodes/Split/Inputs/Input" />
+          <Link source="Inlets/Channel 2" sink="Nodes/Split#1/Inputs/Input" />
+          <Link source="Nodes/ToByte#5/Outputs/Result" sink="Nodes/Create#9/Inputs/Value" />
+          <Link source="Inlets/Input#3" sink="Nodes/ToByte#5/Inputs/Input" />
+          <Link source="Nodes/ToByte#6/Outputs/Result" sink="Nodes/Create#10/Inputs/Value" />
+          <Link source="Inlets/Input#4" sink="Nodes/*#2/Inputs/Input" />
+          <Link source="Constants/Input 2" sink="Nodes/*#2/Inputs/Input 2" />
+          <Link source="Nodes/*#2/Outputs/Output" sink="Nodes/Round#2/Inputs/Input" />
+          <Link source="Nodes/Round#2/Outputs/Result" sink="Nodes/ToByte#6/Inputs/Input" />
+          <Link source="Constants/Count" sink="Nodes/Repeat/Inputs/Count" />
+          <Link source="Nodes/Repeat/Outputs/Result" sink="Nodes/ToSpread#3/Inputs/Input" />
+          <Link source="Nodes/Create#9/Outputs/Output" sink="Nodes/Repeat/Inputs/Element" />
+          <Link source="Nodes/ToSpread#3/Outputs/Result" sink="Outlets/Channel" />
+          <Link source="Constants/Count#1" sink="Nodes/Repeat#1/Inputs/Count" />
+          <Link source="Nodes/Repeat#1/Outputs/Result" sink="Nodes/ToSpread#4/Inputs/Input" />
+          <Link source="Nodes/Create#10/Outputs/Output" sink="Nodes/Repeat#1/Inputs/Element" />
+          <Link source="Nodes/ToSpread#4/Outputs/Result" sink="Outlets/Channel#1" />
+          <Link source="Inlets/Label" sink="Nodes/Create#10/Inputs/Label" />
+          <Link source="Inlets/Label#1" sink="Nodes/Create#9/Inputs/Label" />
+          <Link source="Inlets/Channel 1" sink="Nodes/SwitchInput/Inputs/True" />
+          <Link source="Inlets/Channel 2" sink="Nodes/SwitchInput/Inputs/False" />
+          <Link source="Nodes/SwitchInput/Outputs/Output" sink="Outlets/Output#3" />
+          <Link source="Nodes/Split/Outputs/Value" sink="Nodes/&gt;/Inputs/Input" />
+          <Link source="Nodes/Split#1/Outputs/Value" sink="Nodes/&gt;/Inputs/Input 2" />
+          <Link source="Nodes/&gt;/Outputs/Result" sink="Nodes/SwitchInput/Inputs/Condition" />
         </LINKS>
       </BODY>
     </PATCH>
